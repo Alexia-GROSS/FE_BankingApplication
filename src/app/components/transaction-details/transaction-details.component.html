@@ -1,0 +1,30 @@
+<h2>Transaction Details</h2>
+
+<hr/>
+<div *ngIf="transaction">
+  <div>
+    <label><b>Transaction ID: </b></label> {{transaction.transactionID}}
+  </div>
+  <div>
+    <label><b>Amount: </b></label> {{transaction.amount}}
+  </div>
+  <div>
+    <label><b>Currency: </b></label> {{transaction.currency}}
+  </div>
+  <div>
+    <label><b>Target account: </b></label> {{transaction.targetAccount}}
+  </div>
+  <div>
+    <label><b>Sending account: </b></label> {{transaction.sendingAccount}}
+  </div>
+  <div>
+    <label><b>Date: </b></label> {{transaction.date}}
+  </div>
+  <div>
+    <label><b>Description: </b></label> {{transaction.description}}
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Employee List</button><br>

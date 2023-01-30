@@ -1,0 +1,38 @@
+<h3>Create Employee</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="amount">Amount</label>
+      <input type="text" class="form-control" id="amount" required [(ngModel)]="transaction.amount" name="amount">
+    </div>
+    <div class="form-group">
+      <label for="currency">currency</label>
+      <input type="text" class="form-control" id="currency" required [(ngModel)]="transaction.currency" name="currency">
+    </div>
+    <div class="form-group">
+      <label for="targetAccount">targetAccount</label>
+      <input type="text" class="form-control" id="targetAccount" required [(ngModel)]="transaction.targetAccount" name="targetAccount">
+    </div>
+
+    <div class="form-group">
+      <label for="sendingAccount">sendingAccount</label>
+      <input type="text" class="form-control" id="sendingAccount" required [(ngModel)]="transaction.sendingAccount" name="sendingAccount">
+    </div>
+
+    <div class="form-group">
+      <label for="date">date</label>
+      <input type="text" class="form-control" id="date" required [(ngModel)]="transaction.date" name="date">
+    </div>
+
+    <div class="form-group">
+      <label for="description">description</label>
+      <input type="text" class="form-control" id="description" required [(ngModel)]="transaction.description" name="description">
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+</div>

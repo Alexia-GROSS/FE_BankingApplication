@@ -1,0 +1,34 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Transaction List</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>transactionID</th>
+        <th>amount</th>
+        <th>currency</th>
+        <th>targetAccount</th>
+        <th>sendingAccount</th>
+        <th>date</th>
+        <th>description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let transaction of transactions | async">
+        <td>{{transaction.transactionID}}</td>
+        <td>{{transaction.amount}}</td>
+        <td>{{transaction.currency}}</td>
+        <td>{{transaction.targetAccount}}</td>
+        <td>{{transaction.sendingAccount}}</td>
+        <td>{{transaction.date}}</td>
+        <td>{{transaction.description}}</td>
+        <td><button (click)="deleteTransaction(transaction.transactionID)" class="btn btn-danger">Delete</button>
+          <button (click)="transactionDetails(transaction.transactionID)" class="btn btn-info" style="margin-left: 10px">Details</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
