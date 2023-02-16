@@ -6,5 +6,5 @@ export class Transaction {
   date: Date;
   description: string;
   currency: string;
-
+  category: string;
 }

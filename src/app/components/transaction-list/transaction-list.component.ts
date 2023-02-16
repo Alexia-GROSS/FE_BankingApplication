@@ -3,6 +3,8 @@ import {Observable} from "rxjs";
 import {Transaction} from "../../models/transaction.model";
 import {TransactionService} from "../../services/transaction.service";
 import {Router} from "@angular/router";
+import {Category} from "../../models/category.model";
+import {CategoryService} from "../../services/category.service";
 
 @Component({
   selector: 'app-transaction-list',
@@ -11,8 +13,9 @@ import {Router} from "@angular/router";
 })
 export class TransactionListComponent implements OnInit{
   transactions: Observable<Transaction[]>;
+  categories: Observable<Category[]>;
 
-  constructor(private transactionService: TransactionService, private router: Router) {
+  constructor(private transactionService: TransactionService, private categoryService: CategoryService, private router: Router) {
   }
 
   ngOnInit(){
@@ -21,6 +24,11 @@ export class TransactionListComponent implements OnInit{
 
   reloadData() {
     this.transactions = this.transactionService.getTransactionList();
+    this.transactionService.getTransactionList().subscribe(
+      data => {
+        console.log(data);
+      });
+    this.categories = this.categoryService.getCategoryList();
   }
 
   deleteTransaction(transactionID: bigint) {

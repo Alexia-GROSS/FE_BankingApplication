@@ -9,6 +9,7 @@ import { TransactionDetailsComponent } from './components/transaction-details/tr
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 import { UpdateTransactionComponent } from './components/update-transaction/update-transaction.component';
 import {HttpClientModule} from "@angular/common/http";
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {HttpClientModule} from "@angular/common/http";
     CreateTransactionComponent,
     TransactionDetailsComponent,
     TransactionListComponent,
-    UpdateTransactionComponent
+    UpdateTransactionComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

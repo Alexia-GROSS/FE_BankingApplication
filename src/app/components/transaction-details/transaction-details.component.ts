@@ -28,6 +28,6 @@ export class TransactionDetailsComponent implements OnInit {
   }
 
   list(){
-    this.router.navigate(['']);
+    this.router.navigate(['all']);
   }
 }
