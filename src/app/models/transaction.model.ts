@@ -1,3 +1,5 @@
+import {Category} from "./category.model";
+
 export class Transaction {
   transactionID: bigint;
   amount: bigint;
@@ -6,5 +8,6 @@ export class Transaction {
   date: Date;
   description: string;
   currency: string;
-  category: string;
+  categoryId: bigint;
+  categoryType: string;
 }

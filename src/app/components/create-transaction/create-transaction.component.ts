@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {Transaction} from "../../models/transaction.model";
 import {TransactionService} from "../../services/transaction.service";
 import {Router} from "@angular/router";
+import {Observable} from "rxjs";
+import {Category} from "../../models/category.model";
+import {CategoryService} from "../../services/category.service";
 
 @Component({
   selector: 'app-create-transaction',
@@ -11,11 +14,28 @@ import {Router} from "@angular/router";
 export class CreateTransactionComponent implements OnInit {
   transaction: Transaction = new Transaction();
   submitted = false;
+  categories: Observable<Category[]>;
+  completeDate: Date;
+  localCompleteDate: string;
 
-  constructor(private transactionService: TransactionService,
-              private router: Router) { }
+
+  constructor(private transactionService: TransactionService, private categoryService: CategoryService,
+              private router: Router) {
+    this.completeDate = new Date();
+    this.localCompleteDate = this.completeDate.toISOString();
+    this.localCompleteDate = this.localCompleteDate.substring(0, this.localCompleteDate.length - 1);
+  }
 
   ngOnInit() {
+    this.reloadData();
+  }
+
+  reloadData() {
+    this.categories = this.categoryService.getCategoryList();
+  }
+
+  onOptionsSelected(value:string){
+    console.log("the selected value is " + value);
   }
 
   newEmployee(): void {

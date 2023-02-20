@@ -1,14 +1,16 @@
-<h3>Create Employee</h3>
+<h3>Create Transaction</h3>
 <div [hidden]="submitted" style="width: 400px;">
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="amount">Amount</label>
       <input type="text" class="form-control" id="amount" required [(ngModel)]="transaction.amount" name="amount">
     </div>
+
     <div class="form-group">
-      <label for="currency">currency</label>
+      <label for="currency">Currency</label>
       <input type="text" class="form-control" id="currency" required [(ngModel)]="transaction.currency" name="currency">
     </div>
+
     <div class="form-group">
       <label for="targetAccount">targetAccount</label>
       <input type="text" class="form-control" id="targetAccount" required [(ngModel)]="transaction.targetAccount" name="targetAccount">
@@ -21,8 +23,20 @@
 
     <div class="form-group">
       <label for="date">date</label>
-      <input type="text" class="form-control" id="date" required [(ngModel)]="transaction.date" name="date">
+      <input
+        type="datetime-local"
+        id="date"
+        placeholder="yyyy-MM-ddTHH:mm:ss"
+        class="form-control"
+        required [(ngModel)]="transaction.date"
+        name="date"
+      />
+      <br/>
+      Date: {{completeDate | date:'short'}}
+      <br/>
+      ISO Date: {{ localCompleteDate }}
     </div>
+
 
     <div class="form-group">
       <label for="description">description</label>
@@ -30,8 +44,15 @@
     </div>
 
     <div class="form-group">
-      <label for="category">category</label>
-      <input type="text" class="form-control" id="category" required [(ngModel)]="transaction.category" name="category">
+      <label for="category">Category</label>
+      <select  required [(ngModel)]="transaction.categoryId"
+               [ngModelOptions]="{standalone: true}"
+                class='select-option'
+               #mySelect
+               (change)='onOptionsSelected(mySelect.value)'>
+        <option id="category" *ngFor="let category of categories | async "  [value]="category.id" name="category">{{category.type}}</option>
+      </select>
+      <p>You selected: {{transaction.categoryId}}</p>
     </div>
 
     <button type="submit" class="btn btn-success">Submit</button>
