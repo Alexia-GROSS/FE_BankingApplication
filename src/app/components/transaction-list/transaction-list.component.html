@@ -14,8 +14,9 @@
         <th>Date</th>
         <th>Description</th>
         <th>Category</th>
-        <th>Delete</th>
+        <th>Update</th>
         <th>Details</th>
+        <th>Delete</th>
       </tr>
       </thead>
       <tbody>
@@ -28,9 +29,9 @@
         <td>{{transaction.date}}</td>
         <td>{{transaction.description}}</td>
         <td>{{transaction.categoryType}}</td>
+        <td><button (click)="updateTransaction(transaction.transactionID)" class="btn btn-info" style="margin-left: 10px">Update</button></td>
+        <td><button (click)="transactionDetails(transaction.transactionID)" class="btn btn-info" style="margin-left: 10px">Details</button></td>
         <td><button (click)="deleteTransaction(transaction.transactionID)" class="btn btn-danger">Delete</button></td>
-        <td><button (click)="transactionDetails(transaction.transactionID)" class="btn btn-info" style="margin-left: 10px">Details</button>
-        </td>
       </tr>
       </tbody>
     </table>

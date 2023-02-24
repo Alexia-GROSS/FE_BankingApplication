@@ -23,8 +23,9 @@ export class TransactionService {
     return this.http.post(`${this.baseUrl}/add`, transaction);
   }
 
-  updateTransaction(transactionID: bigint, value: any): Observable<Object> {
-    return this.http.put(`${this.baseUrl}/${transactionID}`, value);
+  updateTransaction(transaction: Object): Observable<Object> {
+    console.log("Call BE", transaction);
+    return this.http.put(`${this.baseUrl}/update`, transaction);
   }
 
   deleteTransaction(transactionID: bigint): Observable<any> {
