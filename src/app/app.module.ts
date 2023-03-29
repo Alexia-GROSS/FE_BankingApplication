@@ -10,6 +10,22 @@ import { TransactionListComponent } from './components/transaction-list/transact
 import { UpdateTransactionComponent } from './components/update-transaction/update-transaction.component';
 import {HttpClientModule} from "@angular/common/http";
 import { HomeComponent } from './components/home/home.component';
+import {LoginComponent} from "./components/authentication/login/login.component";
+import {UserComponent} from "./components/authentication/user/user.component";
+import {RegisterComponent} from "./components/authentication/register/register.component";
+import {AuthHomeComponent} from "./components/authentication/auth-home/auth-home.component";
+import {AdminComponent} from "./components/authentication/admin/admin.component";
+import {PmComponent} from "./components/authentication/pm/pm.component";
+
+import { MatSidenavModule } from '@angular/material/sidenav';
+import {CommonModule} from "@angular/common";
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSelectModule} from "@angular/material/select";
+
 
 @NgModule({
   declarations: [
@@ -18,13 +34,27 @@ import { HomeComponent } from './components/home/home.component';
     TransactionDetailsComponent,
     TransactionListComponent,
     UpdateTransactionComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent,
+    UserComponent,
+    RegisterComponent,
+    AuthHomeComponent,
+    AdminComponent,
+    PmComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    CommonModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

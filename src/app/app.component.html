@@ -3,22 +3,43 @@
   <ul class="navbar-nav">
     <!-- NAVIGATION MENUS -->
     <div class="menu">
-      <li class="nav-item">
+      <!-- HOME -->
+      <li class="nav-item"><a class="nav-link" routerLink="/" routerLinkActive="active">Home</a></li>
+
+      <!-- USER -->
+      <li *ngIf="authority === 'user'" class="nav-item">
+        <a class="nav-link" routerLink="user">User Board</a>
+      </li>
+
+      <!-- ADMIN -->
+      <li *ngIf="authority === 'admin'" class="nav-item">
+        <a class="nav-link" routerLink="admin">Admin Board</a>
+      </li>
+      <li *ngIf="authority === 'admin'" class="nav-item">
         <a routerLink="/" class="nav-link" routerLinkActive="active">Home</a>
       </li>
-      <li class="nav-item">
+      <li *ngIf="authority === 'admin'" class="nav-item">
         <a routerLink="/all" class="nav-link" routerLinkActive="active">Transaction List</a>
       </li>
-      <li class="nav-item">
+      <li *ngIf="authority === 'admin'" class="nav-item">
         <a routerLink="/add" class="nav-link" routerLinkActive="active">Add Transaction</a>
       </li>
+
+      <!-- PM -->
+      <li *ngIf="authority === 'pm'" class="nav-item">
+        <a class="nav-link" routerLink="pm">PM Board</a>
+      </li>
+
+      <!-- LOGIN -->
+      <li *ngIf="!authority" class="nav-item">
+        <a class="nav-link" routerLink="auth/login">Login</a>
+      </li>
+
+
     </div>
   </ul>
 </nav>
 <div class="container">
-  <br>
-  <h2 style="text-align: center;">{{title}}</h2>
-  <hr>
   <div class="card">
     <div class="card-body">
       <router-outlet></router-outlet>
