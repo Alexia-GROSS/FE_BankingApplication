@@ -4,7 +4,7 @@
     <!-- NAVIGATION MENUS -->
     <div class="menu">
       <!-- HOME -->
-      <li class="nav-item"><a class="nav-link" routerLink="/" routerLinkActive="active">Home</a></li>
+      <li *ngIf="!authority" class="nav-item"><a class="nav-link" routerLink="/" routerLinkActive="active">Home</a></li>
 
       <!-- USER -->
       <li *ngIf="authority === 'user'" class="nav-item">
@@ -16,7 +16,7 @@
         <a class="nav-link" routerLink="admin">Admin Board</a>
       </li>
       <li *ngIf="authority === 'admin'" class="nav-item">
-        <a routerLink="/" class="nav-link" routerLinkActive="active">Home</a>
+        <a routerLink="/authhome" class="nav-link" routerLinkActive="active">Home</a>
       </li>
       <li *ngIf="authority === 'admin'" class="nav-item">
         <a routerLink="/all" class="nav-link" routerLinkActive="active">Transaction List</a>

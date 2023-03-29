@@ -25,6 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from "@angular/material/select";
+import {httpInterceptorProviders} from "./components/authentication/auth/auth-interceptor";
 
 
 @NgModule({
@@ -56,7 +57,7 @@ import {MatSelectModule} from "@angular/material/select";
     MatIconModule,
     MatSelectModule,
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
