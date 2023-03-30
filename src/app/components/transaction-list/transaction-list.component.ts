@@ -5,6 +5,7 @@ import {TransactionService} from "../../services/transaction.service";
 import {Router} from "@angular/router";
 import {Category} from "../../models/category.model";
 import {CategoryService} from "../../services/category.service";
+import {TokenStorageService} from "../../services/token-storage.service";
 
 @Component({
   selector: 'app-transaction-list',
@@ -14,8 +15,9 @@ import {CategoryService} from "../../services/category.service";
 export class TransactionListComponent implements OnInit{
   transactions: Observable<Transaction[]>;
   categories: Observable<Category[]>;
+  info: any;
 
-  constructor(private transactionService: TransactionService, private categoryService: CategoryService, private router: Router) {
+  constructor(private transactionService: TransactionService, private categoryService: CategoryService, private router: Router, private token: TokenStorageService) {
   }
 
   ngOnInit(){

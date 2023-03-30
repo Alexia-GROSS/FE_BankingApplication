@@ -1,65 +1,73 @@
-<h3>Create Transaction</h3>
-<div [hidden]="submitted" style="width: 400px;">
-  <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="amount">Amount</label>
-      <input type="text" class="form-control" id="amount" required [(ngModel)]="transaction.amount" name="amount">
+<div *ngIf="info.token;">
+  <h2>Create Transaction</h2>
+
+  <div class="form-content">
+    <div [hidden]="submitted" style="width: 400px;">
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="amount">Amount</label>
+          <input type="text"
+                 class="form-control"
+                 id="amount" required [(ngModel)]="transaction.amount" placeholder="Amount" name="amount">
+        </div>
+
+        <div class="form-group">
+          <label for="currency">Currency</label>
+          <input type="text" class="form-control" id="currency" required [(ngModel)]="transaction.currency" placeholder="Currency" name="currency">
+        </div>
+
+        <div class="form-group">
+          <label for="targetAccount">Target Account</label>
+          <input type="text" class="form-control" id="targetAccount" required [(ngModel)]="transaction.targetAccount" placeholder="IBAN from who you want to send the money" name="targetAccount">
+        </div>
+
+        <div class="form-group">
+          <label for="sendingAccount">Sending Account</label>
+          <input type="text" class="form-control" id="sendingAccount" required [(ngModel)]="transaction.sendingAccount" placeholder="IBAN from where you are taking the money" name="sendingAccount">
+        </div>
+
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input
+            type="datetime-local"
+            id="date"
+            placeholder="yyyy-MM-ddTHH:mm:ss"
+            class="form-control"
+            required [(ngModel)]="transaction.date"
+            name="date"
+          />
+          <!--<br/>
+          Date: {{completeDate | date:'short'}}
+          <br/>
+          ISO Date: {{ localCompleteDate }}-->
+        </div>
+
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text" class="form-control" id="description" required [(ngModel)]="transaction.description" placeholder="Description" name="description">
+        </div>
+
+        <div class="form-group">
+
+            <label for="category">Category</label>
+            <select  required [(ngModel)]="transaction.categoryId"
+                     [ngModelOptions]="{standalone: true}"
+                      class='select-option'
+                     #mySelect
+                     (change)='onOptionsSelected(mySelect.value)'>
+              <option id="category" *ngFor="let category of categories | async "  [value]="category.id" name="category">{{category.type}}</option>
+            </select>
+
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
     </div>
+  </div>
 
-    <div class="form-group">
-      <label for="currency">Currency</label>
-      <input type="text" class="form-control" id="currency" required [(ngModel)]="transaction.currency" name="currency">
-    </div>
-
-    <div class="form-group">
-      <label for="targetAccount">targetAccount</label>
-      <input type="text" class="form-control" id="targetAccount" required [(ngModel)]="transaction.targetAccount" name="targetAccount">
-    </div>
-
-    <div class="form-group">
-      <label for="sendingAccount">sendingAccount</label>
-      <input type="text" class="form-control" id="sendingAccount" required [(ngModel)]="transaction.sendingAccount" name="sendingAccount">
-    </div>
-
-    <div class="form-group">
-      <label for="date">date</label>
-      <input
-        type="datetime-local"
-        id="date"
-        placeholder="yyyy-MM-ddTHH:mm:ss"
-        class="form-control"
-        required [(ngModel)]="transaction.date"
-        name="date"
-      />
-      <br/>
-      Date: {{completeDate | date:'short'}}
-      <br/>
-      ISO Date: {{ localCompleteDate }}
-    </div>
-
-
-    <div class="form-group">
-      <label for="description">description</label>
-      <input type="text" class="form-control" id="description" required [(ngModel)]="transaction.description" name="description">
-    </div>
-
-    <div class="form-group">
-      <label for="category">Category</label>
-      <select  required [(ngModel)]="transaction.categoryId"
-               [ngModelOptions]="{standalone: true}"
-                class='select-option'
-               #mySelect
-               (change)='onOptionsSelected(mySelect.value)'>
-        <option id="category" *ngFor="let category of categories | async "  [value]="category.id" name="category">{{category.type}}</option>
-      </select>
-      <p>You selected: {{transaction.categoryId}}</p>
-    </div>
-
-    <button type="submit" class="btn btn-success">Submit</button>
-  </form>
-</div>
-
-<div [hidden]="!submitted">
-  <h4>You submitted successfully!</h4>
-  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+  <div [hidden]="!submitted">
+    <h4>You submitted successfully!</h4>
+    <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+  </div>
 </div>

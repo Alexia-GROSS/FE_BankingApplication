@@ -24,6 +24,9 @@
       <li *ngIf="authority === 'admin'" class="nav-item">
         <a routerLink="/add" class="nav-link" routerLinkActive="active">Add Transaction</a>
       </li>
+      <li *ngIf="authority === 'admin'" class="nav-item">
+        <a (click)="logout()">Logout</a>
+      </li>
 
       <!-- PM -->
       <li *ngIf="authority === 'pm'" class="nav-item">
@@ -33,6 +36,11 @@
       <!-- LOGIN -->
       <li *ngIf="!authority" class="nav-item">
         <a class="nav-link" routerLink="auth/login">Login</a>
+      </li>
+
+      <!-- REGISTER -->
+      <li *ngIf="!authority" class="nav-item">
+        <a class="nav-link" routerLink="signup">Register</a>
       </li>
 
 

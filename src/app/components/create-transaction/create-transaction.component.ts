@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {Category} from "../../models/category.model";
 import {CategoryService} from "../../services/category.service";
+import {TokenStorageService} from "../../services/token-storage.service";
 
 @Component({
   selector: 'app-create-transaction',
@@ -17,10 +18,11 @@ export class CreateTransactionComponent implements OnInit {
   categories: Observable<Category[]>;
   completeDate: Date;
   localCompleteDate: string;
+  info: any;
 
 
   constructor(private transactionService: TransactionService, private categoryService: CategoryService,
-              private router: Router) {
+              private router: Router, private token: TokenStorageService) {
     this.completeDate = new Date();
     this.localCompleteDate = this.completeDate.toISOString();
     this.localCompleteDate = this.localCompleteDate.substring(0, this.localCompleteDate.length - 1);

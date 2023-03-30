@@ -1,11 +1,22 @@
+.panel {
+  max-width:80%;
+  margin:auto;
+  margin-top: 50px;
+}
+h2{
+  font-size: 200%;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
+  margin-bottom: 50px;
 }
 
-td {
-  border-bottom: solid 1px black;
-  border-top: solid 1px black;
+th {
+  text-align: center;
+  background-color: midnightblue;
+  color: white;
 }
 
 tr { border-right: solid 1px black;
@@ -13,16 +24,33 @@ tr { border-right: solid 1px black;
   border-top: solid 1px black;
 }
 
-th {
-  text-align: left;
-}
-
 td {
-  text-align: left;
+  border-bottom: solid 1px black;
+  border-top: solid 1px black;
+  text-align: center;
   padding: 4px;
 }
 
 tr:nth-child(even) {
-  background-color: lightgray;
+  background-color: #f2f2f2;
 }
 
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #FCC981;
+}
+
+.button {
+  /* remove default behavior */
+  appearance:none;
+  -webkit-appearance:none;
+
+  /* usual styles */
+  border:none;
+  background-color:midnightblue;
+  color:#fff;
+  font-weight:600;
+  border-radius:10px;
+  width:100%;
+  padding: 16px 25px;
+  margin: 15px auto;
+}

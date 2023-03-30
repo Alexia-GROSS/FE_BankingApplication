@@ -2,5 +2,5 @@
 /* for sidenav to take a whole page */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: sans-serif, "Helvetica Neue"; color: black}
+body { margin: 0; font-family: "Myriad", "Segoe UI", "Helvetica Neue", arial, sans-serif; color: black}
 

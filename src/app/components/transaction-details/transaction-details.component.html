@@ -1,33 +1,55 @@
-<h2>Transaction Details</h2>
-
-<hr/>
-<div *ngIf="transaction">
-  <div>
-    <label><b>Transaction ID: </b></label> {{transaction.transactionID}}
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Transaction Details</h2>
   </div>
-  <div>
-    <label><b>Amount: </b></label> {{transaction.amount}}
-  </div>
-  <div>
-    <label><b>Currency: </b></label> {{transaction.currency}}
-  </div>
-  <div>
-    <label><b>Target account: </b></label> {{transaction.targetAccount}}
-  </div>
-  <div>
-    <label><b>Sending account: </b></label> {{transaction.sendingAccount}}
-  </div>
-  <div>
-    <label><b>Date: </b></label> {{transaction.date}}
-  </div>
-  <div>
-    <label><b>Description: </b></label> {{transaction.description}}
-  </div>
-  <div>
-    <label><b>Category: </b></label> {{transaction.categoryType}}
+  <div class="panel-body">
+    <table class="table table-striped table-hover">
+      <thead>
+      <tr>
+        <th>Fields</th>
+        <th>Details</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngIf="transaction">
+        <td>Transaction ID</td>
+        <td>{{transaction.transactionID}}</td>
+      </tr>
+      <tr *ngIf="transaction">
+        <td>Amount</td>
+        <td>{{transaction.amount}}</td>
+      </tr>
+      <tr *ngIf="transaction">
+        <td>Currency</td>
+        <td>{{transaction.currency}}</td>
+      </tr>
+      <tr *ngIf="transaction">
+        <td>Target account</td>
+        <td>{{transaction.targetAccount}}</td>
+      </tr>
+      <tr *ngIf="transaction">
+        <td>Sending account</td>
+        <td>{{transaction.sendingAccount}}</td>
+      </tr>
+      <tr *ngIf="transaction">
+        <td>Date</td>
+        <td>{{transaction.date}}</td>
+      </tr>
+      <tr *ngIf="transaction">
+        <td>Description</td>
+        <td>{{transaction.description}}</td>
+      </tr>
+      <tr *ngIf="transaction">
+        <td>Category</td>
+        <td>{{transaction.categoryType}}</td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 
 <br>
 <br>
-<button (click)="list()" class="btn btn-primary">Back to Employee List</button><br>
+<div class="buttons-holder">
+  <button (click)="list()" class="btn btn-primary">Back to Employee List</button><br>
+</div>

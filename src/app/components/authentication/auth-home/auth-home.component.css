@@ -1,0 +1,10 @@
+.main-page{
+  max-width:800px;
+  margin:auto;
+  margin-top: 50px;
+}
+
+h1{
+  font-size: 2em;
+  margin-bottom: 50px;
+}
