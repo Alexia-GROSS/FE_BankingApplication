@@ -29,6 +29,11 @@ export class CreateTransactionComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.info = {
+      token: this.token.getToken(),
+      username: this.token.getUsername(),
+      authorities: this.token.getAuthorities()
+    };
     this.reloadData();
   }
 
@@ -48,7 +53,6 @@ export class CreateTransactionComponent implements OnInit {
   save() {
     this.transactionService
       .createTransaction(this.transaction).subscribe(data => {
-        console.log(data)
         this.transaction = new Transaction();
         this.gotoList();
       },
@@ -61,6 +65,6 @@ export class CreateTransactionComponent implements OnInit {
   }
 
   gotoList() {
-    this.router.navigate(['']);
+    this.router.navigate(['all']);
   }
 }

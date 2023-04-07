@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routing.module';
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { CreateTransactionComponent } from './components/create-transaction/create-transaction.component';
@@ -26,6 +27,7 @@ import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from "@angular/material/select";
 import {httpInterceptorProviders} from "./components/authentication/auth/auth-interceptor";
+import {FootprintPageComponent} from "./components/footprint-page/footprint-page.component";
 
 
 @NgModule({
@@ -42,13 +44,16 @@ import {httpInterceptorProviders} from "./components/authentication/auth/auth-in
     AuthHomeComponent,
     AdminComponent,
     PmComponent,
+    FootprintPageComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    RouterModule,
     FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     MatToolbarModule,
     MatSidenavModule,

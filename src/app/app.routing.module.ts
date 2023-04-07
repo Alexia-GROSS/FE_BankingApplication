@@ -11,6 +11,7 @@ import {AuthHomeComponent} from "./components/authentication/auth-home/auth-home
 import {UserComponent} from "./components/authentication/user/user.component";
 import {PmComponent} from "./components/authentication/pm/pm.component";
 import {AdminComponent} from "./components/authentication/admin/admin.component";
+import {FootprintPageComponent} from "./components/footprint-page/footprint-page.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'auth/login', component: LoginComponent },
   { path: 'signup', component: RegisterComponent },
+  { path: 'allfootprint', component: FootprintPageComponent},
 
 ];
 

@@ -22,6 +22,11 @@ export class TransactionListComponent implements OnInit{
 
   ngOnInit(){
     this.reloadData();
+    this.info = {
+      token: this.token.getToken(),
+      username: this.token.getUsername(),
+      authorities: this.token.getAuthorities()
+    };
   }
 
   reloadData() {

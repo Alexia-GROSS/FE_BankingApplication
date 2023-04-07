@@ -5,7 +5,7 @@
 <ng-template #signupForm>
   <div class="row col-sm-6">
     <h1>Register</h1>
-    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" ngForm #f="ngForm"  novalidate>
 
       <div class="form-group">
         <input type="text"

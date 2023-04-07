@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { TokenStorageService } from '../../../services/token-storage.service';
 import { AuthLoginInfo } from '../auth/login-info';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
