@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 import { TokenStorageService } from '../../../services/token-storage.service';
 
@@ -10,7 +11,7 @@ import { TokenStorageService } from '../../../services/token-storage.service';
 export class AuthHomeComponent implements OnInit {
   info: any;
 
-  constructor(private token: TokenStorageService) { }
+  constructor(private token: TokenStorageService, private router: Router) { }
 
   ngOnInit() {
     this.info = {
@@ -21,6 +22,19 @@ export class AuthHomeComponent implements OnInit {
     console.log(this.token.getUsername())
     console.log(this.token.getAuthorities())
   }
+
+  transactionList(){
+    this.router.navigate(['all']);
+  }
+
+  addTransaction(){
+    this.router.navigate(['add']);
+  }
+
+  footprint(){
+    this.router.navigate(['allfootprint']);
+  }
+
 
   logout() {
     this.token.signOut();

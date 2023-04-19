@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {Category} from "../../models/category.model";
 import {CategoryService} from "../../services/category.service";
 import {TokenStorageService} from "../../services/token-storage.service";
+import {MoneybalanceService} from "../../services/moneybalance.service";
 
 @Component({
   selector: 'app-transaction-list',
@@ -16,8 +17,10 @@ export class TransactionListComponent implements OnInit{
   transactions: Observable<Transaction[]>;
   categories: Observable<Category[]>;
   info: any;
+  moneyBalance: Observable<any>;
+  moneyInAccount: any;
 
-  constructor(private transactionService: TransactionService, private categoryService: CategoryService, private router: Router, private token: TokenStorageService) {
+  constructor(private transactionService: TransactionService, private categoryService: CategoryService, private moneybalanceService: MoneybalanceService, private router: Router, private token: TokenStorageService) {
   }
 
   ngOnInit(){
@@ -36,6 +39,19 @@ export class TransactionListComponent implements OnInit{
         console.log(data);
       });
     this.categories = this.categoryService.getCategoryList();
+
+    this.moneybalanceService.getMoneyBalance().subscribe(
+      data => {
+        console.log(data);
+        this.moneyBalance=data;
+      });
+
+    this.moneybalanceService.getMoneyInAccount().subscribe(
+      data => {
+        console.log(data);
+        this.moneyInAccount=data;
+      });
+
   }
 
   deleteTransaction(transactionID: bigint) {

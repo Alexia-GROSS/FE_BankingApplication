@@ -7,6 +7,12 @@ input {
   width:100%;
 }
 
+h1{
+  font-size: 2em;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
 .col-sm-6{
   max-width:350px;
   margin:auto;

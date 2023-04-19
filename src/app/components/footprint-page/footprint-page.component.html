@@ -1,10 +1,71 @@
-<div class="panel panel-primary">
-  <div class="panel-heading">
-  </div>
+<div *ngIf="info.token;">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Transactions' footprint</h2>
+    </div>
 
-  <div class="widget">
-    <div class="header">FootPrint</div>
-    <div id="chart" class="chart-container"></div>
+    <div>
+      <h3>Select the month for which you would like to retrieve the footprint:</h3>
+    </div>
+
+    <!--<div id="select-button">
+    <button type="button contact-button" (click)="updateId='U-002'" id="button2">Contact Us</button>
+
+      <button (change)='onSelect(val.value)' #val>
+        <option disabled value="null">Select year</option>
+        <option *ngFor="let item of months" [value]="item.id" >
+          {{ item.month }}
+        </option>
+      </button>
+    </div>-->
+    <table class="type-table" >
+      <tr>
+        <td>
+          <mat-button-toggle-group #group="matButtonToggleGroup">
+            <mat-button-toggle value="currency" (click)="onClickType(true)">
+              Money Balance
+            </mat-button-toggle>
+            <mat-button-toggle value="footprint" (click)="onClickType(false)">
+              gCo2
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </td>
+      </tr>
+    </table>
+
+    <table class="month-table" >
+      <tr>
+        <mat-button-toggle-group #group="matButtonToggleGroup">
+          <td *ngFor="let item of months; let i=index;">
+            <mat-button-toggle
+                    (click)="onClick(item.id)"
+                    id="button1"
+            >{{item.month}}</mat-button-toggle>
+          </td>
+        </mat-button-toggle-group>
+      </tr>
+    </table>
+
+
+
+
+    <div class="row">
+      <div class="column left">
+        <div class="widget">
+          <div class="header">FootPrint/MoneyBalance</div>
+
+          <div id="chart" class="chart-container"></div>
+        </div>
+      </div>
+      <div class="column right">
+        Figures:
+        <ul>
+          <li> <b>gCO2</b> for the footprint </li>
+          <li> <b>euro</b> for the Money balance</li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 </div>
 

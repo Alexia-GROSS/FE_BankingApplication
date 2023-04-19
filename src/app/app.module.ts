@@ -28,6 +28,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from "@angular/material/select";
 import {httpInterceptorProviders} from "./components/authentication/auth/auth-interceptor";
 import {FootprintPageComponent} from "./components/footprint-page/footprint-page.component";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 
 @NgModule({
@@ -61,6 +63,8 @@ import {FootprintPageComponent} from "./components/footprint-page/footprint-page
     MatButtonModule,
     MatIconModule,
     MatSelectModule,
+    MatSlideToggleModule,
+    MatButtonToggleModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

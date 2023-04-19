@@ -1,15 +1,32 @@
 <div *ngIf="info.token; else loggedOut">
   <div class="main-page">
 
-    <h1>Welcome to your Banking Application <strong>{{info.username}}</strong></h1>
+    <div class="panel-heading">
+      <h1>Welcome to your Banking Application <strong>{{info.username}}</strong></h1>
+    </div>
 
-    <h2 class="text-primary">Your Information</h2>
+    <div>
+      <table>
+        <tr>
+          <td>
+            <button mat-raised-button color="success" (click)="transactionList()" class="btn btn-info" style="margin-left: 10px">Transaction List</button>
+          </td>
+          <td>
+            <button mat-raised-button type="button home-button" (click)="addTransaction()" class="btn btn-info" style="margin-left: 10px">Add Transaction</button>
+          </td>
+          <td>
+            <button mat-raised-button type="button home-button" (click)="footprint()" class="btn btn-info" style="margin-left: 10px">Footprint</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <!--<h2 class="text-primary">Your Information</h2>
     <p>
       <strong>Username:</strong> {{info.username}}<br/>
       <strong>Roles:</strong> {{info.authorities}}<br />
       <strong>Token:</strong> {{info.token}}.
     </p>
-    <button class="btn btn-secondary" (click)="logout()">Logout</button>
+    <button class="btn btn-secondary" (click)="logout()">Logout</button>-->
   </div>
 </div>
 

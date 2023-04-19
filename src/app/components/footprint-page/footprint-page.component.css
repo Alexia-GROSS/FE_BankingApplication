@@ -7,10 +7,25 @@ h2{
   font-size: 200%;
 }
 
+.month-table{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.type-table{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#toggleButton{
+  text-align: center;
+  margin-top: 40px;
+}
+
 
 .widget {
   margin: 0 auto;
-  width:900px;
+  width:700px;
   margin-top:50px;
   background-color: #222D3A;
   border-radius: 5px;
@@ -38,4 +53,27 @@ h2{
 .shadow {
   -webkit-filter: drop-shadow( 0px 3px 3px rgba(0,0,0,.5) );
   filter: drop-shadow( 0px 3px 3px rgba(0,0,0,.5) );
+}
+
+.column {
+  float: left;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.left {
+  width: 60%;
+}
+
+.right {
+  margin-top: 10%;
+  width: 30%;
+  text-align: left;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }

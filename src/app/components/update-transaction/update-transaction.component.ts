@@ -5,6 +5,7 @@ import {TransactionService} from "../../services/transaction.service";
 import {Observable} from "rxjs";
 import {Category} from "../../models/category.model";
 import {CategoryService} from "../../services/category.service";
+import {TokenStorageService} from "../../services/token-storage.service";
 
 @Component({
   selector: 'app-update-transaction',
@@ -18,10 +19,11 @@ export class UpdateTransactionComponent implements OnInit {
   categories: Observable<Category[]>;
   completeDate: Date;
   localCompleteDate: string;
+  info: any;
   updatedTransaction: Transaction = new Transaction();
 
   constructor(private route: ActivatedRoute,private router: Router,
-              private transactionService: TransactionService, private categoryService: CategoryService) {
+              private transactionService: TransactionService, private categoryService: CategoryService, private token: TokenStorageService) {
       this.completeDate = new Date();
       this.localCompleteDate = this.completeDate.toISOString();
       this.localCompleteDate = this.localCompleteDate.substring(0, this.localCompleteDate.length - 1);
@@ -29,6 +31,12 @@ export class UpdateTransactionComponent implements OnInit {
 
 
   ngOnInit() {
+    this.info = {
+      token: this.token.getToken(),
+      username: this.token.getUsername(),
+      authorities: this.token.getAuthorities()
+    };
+    this.reloadData();
     const routeParams = this.route.snapshot.paramMap;
     const transactionIdFromRoute = Number(routeParams.get('id'));
     console.log("Details", transactionIdFromRoute);
@@ -63,6 +71,6 @@ export class UpdateTransactionComponent implements OnInit {
   }
 
   gotoList() {
-    this.router.navigate(['']);
+    this.router.navigate(['all']);
   }
 }

@@ -42,4 +42,9 @@ export class FootprintService {
   getFootprintForAllCategories(): Observable<any> {
     return this.http.get(`${this.baseUrl}/allfootprint`);
   }
+
+  getFootprintForAllCategoriesPerMonth(month: bigint): Observable<any> {
+    return this.http.get(`${this.baseUrl}/perdate/${month}`);
+  }
+
 }

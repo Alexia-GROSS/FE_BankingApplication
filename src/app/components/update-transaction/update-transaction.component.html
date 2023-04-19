@@ -1,66 +1,71 @@
-<h3>Transaction Update</h3>
+<div *ngIf="info.token;">
+  <h2>Transaction Update</h2>
 
-<div [hidden]="submitted" style="width: 400px;">
-  <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="amount">Amount</label>
-      <input type="text" class="form-control" id="amount" required ng-model="transaction.amount" name="amount">
+  <div class="form-content">
+    <div [hidden]="submitted" style="width: 400px;">
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group" *ngIf="transaction">
+          <label for="amount">Amount</label>
+          <input type="text" class="form-control" id="amount" required ng-model="transaction.amount" name="amount" value={{transaction.amount}}>
+        </div>
+
+        <div class="form-group" *ngIf="transaction">
+          <label for="currency">Currency</label>
+          <input type="text" class="form-control" id="currency" required ng-model="transaction.currency" name="currency" value={{transaction.currency}}>
+        </div>
+
+        <div class="form-group" *ngIf="transaction">
+          <label for="targetAccount">targetAccount</label>
+          <input type="text" class="form-control" id="targetAccount" required ng-model="transaction.targetAccount" name="targetAccount" value={{transaction.targetAccount}}>
+        </div>
+
+        <div class="form-group" *ngIf="transaction">
+          <label for="sendingAccount">sendingAccount</label>
+          <input type="text" class="form-control" id="sendingAccount" required ng-model="transaction.sendingAccount" name="sendingAccount" value={{transaction.sendingAccount}}>
+        </div>
+
+        <div class="form-group" *ngIf="transaction">
+          <label for="date">date</label>
+          <input
+            type="datetime-local"
+            id="date"
+            placeholder="yyyy-MM-ddTHH:mm:ss"
+            class="form-control"
+            required ng-model="transaction.date"
+            name="date"
+            value={{transaction.date}}
+          />
+          <br/>
+          Date: {{completeDate | date:'short'}}
+          <br/>
+          ISO Date: {{ localCompleteDate }}
+        </div>
+
+
+        <div class="form-group" *ngIf="transaction">
+          <label for="description">description</label>
+          <input type="text" class="form-control" id="description" required ng-model="transaction.description" name="description" value={{transaction.description}}>
+        </div>
+
+        <div class="form-group" *ngIf="transaction">
+          <label for="category">Category</label>
+          <select required ng-model="transaction.categoryId"
+                  ng-model-options="{standalone: true}"
+                   class='select-option'
+                  value={{transaction.categoryType}}
+                   #mySelect
+                   (change)='onOptionsSelected(mySelect.value)'>
+            <option id="category" *ngFor="let category of categories | async "  [value]="category.id" name="category">{{category.type}}</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
     </div>
+  </div>
 
-    <div class="form-group">
-      <label for="currency">Currency</label>
-      <input type="text" class="form-control" id="currency" required ng-model="transaction.currency" name="currency">
-    </div>
-
-    <div class="form-group">
-      <label for="targetAccount">targetAccount</label>
-      <input type="text" class="form-control" id="targetAccount" required ng-model="transaction.targetAccount" name="targetAccount">
-    </div>
-
-    <div class="form-group">
-      <label for="sendingAccount">sendingAccount</label>
-      <input type="text" class="form-control" id="sendingAccount" required ng-model="transaction.sendingAccount" name="sendingAccount">
-    </div>
-
-    <div class="form-group">
-      <label for="date">date</label>
-      <input
-        type="datetime-local"
-        id="date"
-        placeholder="yyyy-MM-ddTHH:mm:ss"
-        class="form-control"
-        required ng-model="transaction.date"
-        name="date"
-      />
-      <br/>
-      Date: {{completeDate | date:'short'}}
-      <br/>
-      ISO Date: {{ localCompleteDate }}
-    </div>
-
-
-    <div class="form-group">
-      <label for="description">description</label>
-      <input type="text" class="form-control" id="description" required ng-model="transaction.description" name="description">
-    </div>
-
-    <div class="form-group">
-      <label for="category">Category</label>
-      <select required ng-model="transaction.categoryId"
-              ng-model-options="{standalone: true}"
-               class='select-option'
-               #mySelect
-               (change)='onOptionsSelected(mySelect.value)'>
-        <option id="category" *ngFor="let category of categories | async "  [value]="category.id" name="category">{{category.type}}</option>
-      </select>
-      <p>You selected: {{transaction.categoryId}}</p>
-    </div>
-
-    <button type="submit" class="btn btn-success">Submit</button>
-  </form>
-</div>
-
-<div [hidden]="!submitted">
-  <h4>You submitted successfully!</h4>
-  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+  <div [hidden]="!submitted">
+    <h4>You submitted successfully!</h4>
+    <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+  </div>
 </div>
